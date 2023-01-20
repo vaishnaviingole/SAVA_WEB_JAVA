@@ -1,7 +1,9 @@
 package DAL;
 
+import java.sql.SQLException;
+
 import pojo.user;
 
 public interface userDal {
-user VaidateUser(String email,String password);
+user ValidateUser(String email,String password) throws SQLException;
 }

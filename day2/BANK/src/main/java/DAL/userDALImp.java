@@ -26,7 +26,7 @@ public userDALImp() {
 }
 
 @Override
-public user VaidateUser(String userName, String pass) throws SQLException {
+public user ValidateUser(String userName, String pass) throws SQLException {
 	System.out.println("inside validate user");
 	st.setString(1,userName);
 	st.setString(2, pass);
@@ -37,9 +37,16 @@ public user VaidateUser(String userName, String pass) throws SQLException {
     	us= new user(rset.getInt("userid"),
     			     rset.getString("custName"),
     			     rset.getString("city"),
-    			     rset.getString("email"))
+    			     rset.getString("email"),
+    			     rset.getString("password"));
     }
-	return null;
+	return us;
+}
+public void cleanUp() throws SQLException
+{
+	System.out.println("---useDal cleanup-----");
+	if(st!=null)
+		st.close(); 
 }
 
 }
